@@ -1,37 +1,18 @@
 const { Router } = require('express');
-const {CreateUser,login} = require('../../controllers/UserController');
+const {CreateUser,login} = require('../../controllers/AuthController');
+const { userAuthViaToken } = require('../../middlewares/auth')
+const { getUsers } = require('../../controllers/UserController')
 const route = Router()
-route.get('/', (req, res) => {
-    res.send([
-        {
-            'name': 'YIYI',
-            'age': 45,
-            'religion': 'Hindu',
-            'region': 'Lucknow'
-
-        },
-        {
-            'name': 'YIYI1',
-            'age': 45,
-            'religion': 'Hindu',
-            'region': 'Lucknow'
-
-        },
-        {
-            'name': 'YIYI2',
-            'age': 45,
-            'religion': 'Hindu',
-            'region': 'Lucknow'
-
-        },
-        {
-            'name': 'YIYI3',
-            'age': 45,
-            'religion': 'Hindu',
-            'region': 'Lucknow'
-
-        }
-    ])
+route.get('/',userAuthViaToken, (req, res) => {
+    if(req.body.email){
+         let ageRange= {
+             lowerLimit : req.params.lowerLimit,
+             upperLimit : req.params.upperLimit
+         }
+         getUsers(ageRange,req.params.religion).then((users)=>{
+             res.send(users)
+         })
+    }
 })
 route.post('/login',async (req,res)=>{
     try {

@@ -1,6 +1,7 @@
 const { verifyJwt } = require('../utils/jwt')
 
 async function userAuthViaToken(req, res, next) {
+ // console.log('in auth.js', this)
   const auth = req.header('Authorization')
   if (!auth) {
     return res.status(403).send({
@@ -26,8 +27,9 @@ async function userAuthViaToken(req, res, next) {
   try {
     const user = await verifyJwt(token)
     req.body.email=user.email;
-    req.body.password=user.password;
     req.body.gender = user.gender;
+    req.body.password=user.password;
+    console.log(user);
     return next()
   } catch (err) {
     res.status(403).send({

@@ -1,92 +1,55 @@
 const { males } = require('../Models');
 const { females } = require('../Models');
-const { createJwt } = require('../utils/jwt')
-async function CreateUser(user) {
-    let male = {};
-    let female = {};
-    if (!user.username) throw new Error('missing username')
-    if (!user.password) throw new Error('missing username')
-    if (!user.name) throw new Error('missing username')
-    if (!user.age) throw new Error('missing username')
-    if (!user.region) throw new Error('missing username')
-    //if(!user.religion) throw new Error('missing username')
-    if (!user.email) throw new Error('missing username')
-    if (!user.job) throw new Error('missing username')
-    if (!user.gender) throw new Error('gender missing')
-    if (user.gender === 'male') {
-        male = await males.create({
-            ...user
-        })
-        if (!male) throw new Error('cannot create user')
-        const token = await createJwt(male.get())
 
-        const userJson = {
-            ...male.get(),
-            token
+const { religion } = require('../Models');
+
+async function getUserByReligionId(id) {
+
+    return await males.findAll({
+        where: {
+            religionId: id
         }
-        delete userJson.password
-        return userJson
-        //return male;
-    }
-    if (user.gender === 'female') {
-        female = await females.create({
-            ...user
-        })
-        if (!female) throw new Error('cannot create user')
-        return female;
-    }
+    })
+
+
 
 }
-async function login(userOpts) {
-    let male = {}, female = {};
-    if (!userOpts.email) {
-        throw new Error('Did not supply email')
-    }
-    if (!userOpts.password) {
-        throw new Error('Did not supply password')
-    }
-    if (userOpts.gender === 'male') {
-        male = await males.findOne({
-            attributes: ['email', 'username', 'password'],
-            where: {
-                email: userOpts.email,
-            }
-        })
-        if (male.password !== userOpts.password) {
-            throw new Error('password did not match')
+// this function returns a promise with users within age range and with given religion
+// ageRange is an object with lowerLimit and UpperLimit as age keys;
+//the users returned are sequelize objects , so do users.get() to get users;
+
+async function getUsers(ageRange, religionOfUser) {
+    const ReligionOpted = await religion.findOne({
+        attributes: ['id'],
+        where: {
+            name: religionOfUser
         }
-        if (!male) {
-            throw new Error('user does not exist')
+    })
+
+    const users = await males.findAll({
+        where: {
+            religionId: ReligionOpted.id
         }
-        const token = await createJwt(male.get())
-        const userJson = {
-            ...male.get(),
-            token
-        }
-        delete userJson.password
-        return userJson
-    }
-    if (userOpts.gender === 'female') {
-        male = await females.findOne({
-            attributes: ['email', 'username', 'password'],
-            where: {
-                email: userOpts.email,
-            }
-        })
-        if (female.password !== userOpts.password) {
-            throw new Error('password did not match')
-        }
-        if (!female) {
-            throw new Error('user does not exist')
-        }
-        const token = await createJwt(user.get())
-        const userJson = {
-            ...female.get(),
-            token
-        }
-        delete userJson.password
-        return userJson
-    }
+    })
+
+    users.forEach((user) => {
+        user.get().religionName = religionOfUser;
+        //console.log(user.get())
+    })
+    //console.log(users)
+    const newusers = users.filter((user) => {
+        if (user.get().age >= ageRange.lowerLimit && user.get().age <= ageRange.upperLimit)
+            return user;
+    })
+    return newusers;
+}
+// let ageRange = {
+//     lowerLimit: 50,
+//     upperLimit: 70
+// }
+// getUsers(ageRange, 'Hindu').then((users) => console.log(users));
+
+async function getUser(username) {
 
 }
-module.exports = { CreateUser, login }
+module.exports = { getUsers }
