@@ -4,14 +4,18 @@ const { userAuthViaToken } = require('../../middlewares/auth')
 const { getUsers } = require('../../controllers/UserController')
 const route = Router()
 route.get('/',userAuthViaToken, (req, res) => {
+    console.log(req.query)
     if(req.body.email){
          let ageRange= {
-             lowerLimit : req.params.lowerLimit,
-             upperLimit : req.params.upperLimit
+             lowerLimit : req.query.lowerLimit,
+             upperLimit : req.query.upperLimit
          }
-         getUsers(ageRange,req.params.religion).then((users)=>{
+         getUsers(ageRange,req.query.religion).then((users)=>{
              res.send(users)
          })
+    }
+    else {
+      res.send('Only for logged in users... pls login first')
     }
 })
 route.post('/login',async (req,res)=>{
@@ -28,6 +32,15 @@ route.post('/login',async (req,res)=>{
 })
 route.post('/',async (req,res)=>{
     const createdUser=await CreateUser(req.body)
+    if(!createdUser){
+      res.status(403).send({
+        errors: {
+          body: [
+            'User Not Created , Please Try Again'
+          ]
+        }
+      })
+    }
     res.send(createdUser);
 })
 

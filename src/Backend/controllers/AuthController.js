@@ -14,24 +14,38 @@ async function CreateUser(user) {
     if (!user.job) throw new Error('missing username')
     if (!user.gender) throw new Error('gender missing')
     if (user.gender === 'male') {
-        male = await males.create({
-            ...user
-        })
-        if (!male) throw new Error('cannot create user')
-        const token = await createJwt(male.get())
-
-        const userJson = {
-            ...male.get(),
-            token
+        try{
+            male = await males.create({
+                ...user
+            })
+            
+            const token = await createJwt(male.get())
+    
+            const userJson = {
+                ...male.get(),
+                token
+            }
+            delete userJson.password
+            return userJson
         }
-        delete userJson.password
-        return userJson
+        catch(err){
+            err.message = 'User Not created , try again';
+            return err.message;
+        }
+        
         //return male;
     }
     if (user.gender === 'female') {
         female = await females.create({
             ...user
         })
+        const token = await createJwt(female.get())
+        const userJson = {
+            ...female.get(),
+            token
+        }
+        delete userJson.password
+        return userJson
         if (!female) throw new Error('cannot create user')
         return female;
     }

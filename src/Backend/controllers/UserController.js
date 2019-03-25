@@ -3,22 +3,14 @@ const { females } = require('../Models');
 
 const { religion } = require('../Models');
 
-async function getUserByReligionId(id) {
-
-    return await males.findAll({
-        where: {
-            religionId: id
-        }
-    })
-
-
-
-}
 // this function returns a promise with users within age range and with given religion
 // ageRange is an object with lowerLimit and UpperLimit as age keys;
 //the users returned are sequelize objects , so do users.get() to get users;
 
-async function getUsers(ageRange, religionOfUser) {
+async function getUsers(ageRange, religionOfUser,gender) {
+    const model = males;
+    if(gender=='female')
+    model = females;
     const ReligionOpted = await religion.findOne({
         attributes: ['id'],
         where: {
@@ -26,7 +18,7 @@ async function getUsers(ageRange, religionOfUser) {
         }
     })
 
-    const users = await males.findAll({
+    const users = await model.findAll({
         where: {
             religionId: ReligionOpted.id
         }
@@ -43,13 +35,26 @@ async function getUsers(ageRange, religionOfUser) {
     })
     return newusers;
 }
+//test case
 // let ageRange = {
-//     lowerLimit: 50,
-//     upperLimit: 70
+//     lowerLimit: 30,
+//     upperLimit: 40
 // }
 // getUsers(ageRange, 'Hindu').then((users) => console.log(users));
 
 async function getUser(username) {
-
+    const user = await males.findOne({
+        where: {
+            username: username
+        }
+    })
+    let id = user.get().religionId;
+    const religionOfUser = await religion.findOne({
+        attributes: ['name'],
+        where: { id : id }
+    })
+    user.get().religionName = religionOfUser.get().name;
+    return user;
 }
-module.exports = { getUsers }
+//getUser('ankit111').then((user)=>console.log(user))
+module.exports = { getUsers , getUser }
