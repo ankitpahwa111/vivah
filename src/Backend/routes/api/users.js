@@ -10,7 +10,7 @@ route.get('/',userAuthViaToken, (req, res) => {
              lowerLimit : req.query.lowerLimit,
              upperLimit : req.query.upperLimit
          }
-         getUsers(ageRange,req.query.religion).then((users)=>{
+         getUsers(ageRange,req.query.religion,req.body.gender).then((users)=>{
              res.send(users)
          })
     }

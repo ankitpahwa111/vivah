@@ -85,7 +85,7 @@ async function login(userOpts) {
         return userJson
     }
     if (userOpts.gender === 'female') {
-        male = await females.findOne({
+        female = await females.findOne({
             attributes: ['email', 'username', 'password'],
             where: {
                 email: userOpts.email,
@@ -94,11 +94,13 @@ async function login(userOpts) {
         if (female.password !== userOpts.password) {
             throw new Error('password did not match')
         }
+        
         if (!female) {
             throw new Error('user does not exist')
         }
-        const token = await createJwt(user.get())
         female.get().gender='female';
+        const token = await createJwt(female.get())
+        
         const userJson = {
             ...female.get(),
             token
