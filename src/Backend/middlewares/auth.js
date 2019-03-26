@@ -29,6 +29,7 @@ async function userAuthViaToken(req, res, next) {
     req.body.email=user.email;
     req.body.gender = user.gender;
     req.body.password=user.password;
+    req.body.username = user.username;
     console.log(user);
     return next()
   } catch (err) {

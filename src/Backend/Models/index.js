@@ -144,7 +144,7 @@ males.belongsTo(religion);
 females.belongsTo(religion);
 males.belongsToMany(females, {through : 'favourites'});
 females.belongsToMany(males, {through : 'favourites'});
-console.log(males.prototype.getFemales);
+//console.log(males.prototype.getFemales);
 module.exports = {
     db,
    males,females,couples,religion,photos

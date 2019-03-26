@@ -8,7 +8,7 @@ const { religion } = require('../Models');
 //the users returned are sequelize objects , so do users.get() to get users;
 
 async function getUsers(ageRange, religionOfUser,gender) {
-    console.log('gender of user :' , gender)
+    //console.log('gender of user :' , gender)
     let model = males;
     if(gender=='male')
     model = females;
@@ -18,6 +18,7 @@ async function getUsers(ageRange, religionOfUser,gender) {
             name: religionOfUser
         }
     })
+    //console.log(await ReligionOpted.getMales())
 
     const users = await model.findAll({
         where: {
@@ -55,6 +56,7 @@ async function getUser(username) {
         where: { id : id }
     })
     user.get().religionName = religionOfUser.get().name;
+    //console.log(await user.getFemales());
     return user;
 }
 //getUser('ankit111').then((user)=>console.log(user))
