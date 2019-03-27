@@ -29,7 +29,7 @@ async function makeFavourite(firstUser, secondUser) {
             }
         })
         await female.addMale(male);
-        //  console.log(await female.getMales())
+
     }
 
 }

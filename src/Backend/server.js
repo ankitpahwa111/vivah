@@ -16,7 +16,3 @@ db.sync()
     console.error(err)
   })
 
-//TODO : make DB.sync()
-// app.listen(7788, () => {
-//   console.log('Server started on http://localhost:7788/')
-// })

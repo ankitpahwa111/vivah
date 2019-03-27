@@ -15,7 +15,7 @@ const couples = db.define('couples', {
     }
 })
 const males = db.define('males', {
-    
+
     name: {
         type: Sequelize.STRING(50),
         allowNull: false
@@ -23,10 +23,10 @@ const males = db.define('males', {
     },
     age: {
         type: Sequelize.INTEGER,
-        // allowNull: false
+
 
     },
-   
+
     region: {
         type: Sequelize.STRING(50),
         allowNull: false
@@ -60,12 +60,7 @@ const males = db.define('males', {
 
 })
 const females = db.define('females', {
-    // femaleId:{
-    //     type : Sequelize.STRING,
-    //     primaryKey=true,
-    //     unique : true,
-    //     allowNull: false
-    // },
+
     name: {
         type: Sequelize.STRING(50),
         allowNull: false
@@ -76,11 +71,7 @@ const females = db.define('females', {
         allowNull: false
 
     },
-    //   religion :{
-    //       type : Sequelize.STRING(50),
-    //       allowNull : true,
 
-    //   },
     region: {
         type: Sequelize.STRING(50),
         allowNull: false
@@ -142,10 +133,10 @@ religion.hasMany(males);
 religion.hasMany(females);
 males.belongsTo(religion);
 females.belongsTo(religion);
-males.belongsToMany(females, {through : 'favourites'});
-females.belongsToMany(males, {through : 'favourites'});
+males.belongsToMany(females, { through: 'favourites' });
+females.belongsToMany(males, { through: 'favourites' });
 //console.log(males.prototype.getFemales);
 module.exports = {
     db,
-   males,females,couples,religion,photos
-  }
+    males, females, couples, religion, photos
+}

@@ -10,7 +10,7 @@ async function addPhoto(url, user) {
             url: url,
             maleUsername: user.username
         })
-        //console.log(await male.getPhotos())
+
 
     }
     if (user.gender == 'female') {

@@ -48,7 +48,7 @@ route.post('/addPhoto', userAuthViaToken, (req, res) => {
                 username: req.body.username,
                 gender: req.body.gender
             }
-            addPhoto(req.body.url, user).then(()=>{
+            addPhoto(req.body.url, user).then(() => {
                 res.send('added the photo')
             })
         } catch (err) {
@@ -72,9 +72,9 @@ route.get('/getPhotos', userAuthViaToken, (req, res) => {
                 username: req.body.username,
                 gender: req.body.gender
             }
-            getPhotos(user).then((photos)=>{
-                //let photoArray = [],
-                const photoArray = photos.map((photo)=>{
+            getPhotos(user).then((photos) => {
+
+                const photoArray = photos.map((photo) => {
                     return photo.get().url
                 })
                 res.send(photoArray)
