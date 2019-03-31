@@ -7,8 +7,12 @@
     "mysql2": "^1.6.5",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "sequelize": "^5.1.0"
+    "redux": "^4.0.1",
+    "sequelize": "^5.1.0",
+    "thunk": "0.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
