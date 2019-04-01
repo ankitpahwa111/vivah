@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-
+// import Signin from './components/Auth/signin'
+// import SignUp from './components/Auth/signup'
+import Dashboard from './components/Dashboard/dashboard';
+import { Switch } from 'react-router-dom'
+import Navbar from './components/Layout/Navbar';
 class App extends Component {
   render() {
     return (
@@ -10,15 +14,12 @@ class App extends Component {
           <br></br>
           <br></br>
           <Switch>
-            <Route exact path='/' component={Input}></Route>
-            <Route exact path='/verification' component={OTP}></Route>
-            <Route exact path='/verified' component={Verified}></Route>
-            <Route exact path='/contact' component={Contact}></Route>
-            <Route exact path='/about' component={About}></Route>
-            {/* <Route path='/posts/:postID' component={ProjectDetails}></Route>
-            <Route path="/login" component={Signin}></Route>
-            <Route path='/signup' component={SignUp}></Route>
-            <Route path='/create' component={Create}></Route> */}
+            <Route exact path='/' component={Dashboard}></Route>
+            {/* <Route exact path='/login' component={Signin}></Route>
+            <Route exact path='/signup' component={SignUp}></Route>
+            <Route exact path='/searches' component={SignUp}></Route>
+            <Route exact path='/searches/:username' component={SignUp}></Route> */}
+            
           </Switch>
         </div>
       </BrowserRouter>
