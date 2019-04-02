@@ -4,6 +4,7 @@ import React from 'react'
 // import { compose } from 'redux';
 // import {Redirect} from 'react-router-dom'
 // import moment from 'moment'
+import Footer from '../Layout/Footer'
 const UserDetails = (props) => {
 
 
@@ -40,7 +41,8 @@ const UserDetails = (props) => {
         //         </div>
         //     </div>
         // </div>
-        <div class="row">
+        <React.Fragment>
+        <div class="row user-details">
             <div class="col s12 m6">
                 <div class="card">
                     <div class="card-image">
@@ -62,19 +64,19 @@ const UserDetails = (props) => {
                         <br />
                         <span>contact at ankitpahwa111@gmail.com</span>
                         <br/>
+                        <br/>
+                        <a class="waves-effect waves-light btn"><i class="material-icons left">add_a_photo</i>View Pictures</a>
                         <a class="btn-floating halfway-fab waves-effect waves-light red right"><i class="material-icons">add</i></a>
                     </div>
                 </div>
                 {/* add Photos of the user */}
             </div>
         </div>
+        <br/><br/>
+        <Footer/>
+        </React.Fragment>
     )
 
-    return (
-        <div className="container center">
-            Loading Project ....
-        </div>
-    )
 
 }
 // const mapStateToProps = (state, ownProps) => {

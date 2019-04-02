@@ -23,7 +23,7 @@ const UserSummary = (props) => {
               I am convenient because I require little markup to use effectively.</p>
                     </div>
                     <div class="card-action">
-                        <Link to='/'>View Profile {' '} {' '}
+                        <Link to='/:username'>View Profile {' '} {' '}
                         <i class="material-icons">sentiment_satisfied</i>
                         </Link>
 

@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 // import SignedInLinks from './signedInLinks';
 // import SignedOutLinks from './signedOutLinks';
 // import { connect } from 'react-redux';
-const UserSearchForm = () => {
-
+import { Redirect } from 'react-router-dom'
+const UserSearchForm = (props) => {
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        return <Redirect to='/searches'></Redirect>
+    }
 
     return (
         <React.Fragment>
@@ -41,19 +45,19 @@ const UserSearchForm = () => {
                             <option value="4">Sikh</option>
                         </select>
                     </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Find Match
+                    <button class="btn waves-effect waves-light" type="submit" onClick={handleOnSubmit}>Find Match
                     <i class="material-icons right">send</i>
                     </button>
                 </form>
             </div>
-            
+
         </React.Fragment>
     )
 }
-const mapStateToProps = (state) => {
-    console.log(state)
-    return {
-        auth: state.firebase.auth
-    }
-}
+// const mapStateToProps = (state) => {
+//     console.log(state)
+//     return {
+//         auth: state.firebase.auth
+//     }
+// }
 export default UserSearchForm;

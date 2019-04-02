@@ -6,13 +6,15 @@ import Dashboard from './components/Dashboard/dashboard';
 import { Switch } from 'react-router-dom'
 import Navbar from './components/Layout/Navbar';
 import UserList from './components/Matches/UserList';
-import UserDetails from './components/Matches/UserDetails'
+import UserDetails from './components/Matches/UserDetails';
+//import Sidebar from './components/Layout/Sidenav'
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
           <Navbar />
+          
           <br></br>
           <br></br>
           <Switch>

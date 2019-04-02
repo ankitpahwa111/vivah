@@ -24,8 +24,8 @@ Love unites them...</p>
                                 <p>Start Your Journey now ....</p>
                             </div>
                             <div class="card-action">
-                                <Link to='/'>LOGIN</Link>
-                                <Link to='/'>SIGN UP </Link>
+                                <Link to='/login'>LOGIN</Link>
+                                <Link to='/signup'>SIGN UP </Link>
                             </div>
                         </div>
                     </div>
