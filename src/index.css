@@ -17,21 +17,37 @@ form{
   padding: 20px;
   margin-top: 60px;
 }
-
+.Myform{
+  background-color: whitesmoke;
+  width : 1000px;
+  margin-left : 250px;
+}
 form button, form h5{
   margin: 20px 0;
 }
 .Mycard{
-  margin-left : 300px;
+  margin-left : 350px;
   margin-top : 0px;
   width : 2000px;
 }
 
-.page-footer {
-  background-color : darkslategray;
+.Myfooter {
+  background-color: darkslategray !important;
 }
 .nav-wrapper{
   background-color:  darkslategray;
+}
+.user-list{
+  margin-left:400px;
+}
+.profile-image{
+  width : 150px;
+  height : 150px;
+  
+}
+.profile-name{
+  margin-left : 50px;
+  /* margin-bottom: 30px; */
 }
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=email]:not(.browser-default):focus:not([readonly]),

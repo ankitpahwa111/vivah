@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 //import {Redirect} from 'react-router-dom'
-import Footer from '../Layout/Footer'
+import Footer from '../Layout/Footer';
+import UserSearchForm from '../Matches/UserSearchForm'
 //import Navbar from '../Layout/Navbar'
 class Dashboard extends Component {
 
@@ -29,6 +30,7 @@ Love unites them...</p>
                         </div>
                     </div>
                 </div>
+                <UserSearchForm/>
                 <Footer/>
             </React.Fragment>
         )

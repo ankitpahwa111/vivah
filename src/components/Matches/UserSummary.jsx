@@ -1,17 +1,36 @@
 import React from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom'
+const UserSummary = (props) => {
 
-const ProjectSummary = (props) => {
-    
     return (
-      
-            <div className="card z-depth-0 project-summary">
-                <div className="card-content grey-text text-darken-3">
-                    <span className="card-title ">{props.project.title}</span>
-                    <p>Posted by {props.project.authorFirstName} {props.project.authorLastName}</p>
-                    <p className="grey-text">{moment(props.project.createdAt.toDate()).calendar()}</p>
+
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <img src="./Vivah.jpg" alt="ProfileImage" class='profile-image'/>
+                        
+                        <span class="card-title profile-name">Ankit Pahwa</span>
+                        <br />
+                        <span>21</span>
+                        <br />
+                        <span>Delhi</span>
+                        <br />
+                        <span>Hindu</span>
+                        <br />
+                        <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <Link to='/'>View Profile {' '} {' '}
+                        <i class="material-icons">sentiment_satisfied</i>
+                        </Link>
+
+                    </div>
                 </div>
             </div>
+        </div>
 
     )
 }
@@ -20,4 +39,4 @@ const ProjectSummary = (props) => {
 //         profile : state.firebase.profile
 //     }
 // }
-export default ProjectSummary;
+export default UserSummary;
