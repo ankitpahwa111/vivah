@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
 const UserSearchForm = (props) => {
     const handleOnSubmit = (e) => {
+        
         e.preventDefault();
-        return <Redirect to='/searches'></Redirect>
+        // return <Redirect to='/searches'></Redirect>
+        props.history.push('/searches')
     }
 
     return (

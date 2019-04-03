@@ -5,9 +5,9 @@ import Footer from '../Layout/Footer';
 import UserSearchForm from '../Matches/UserSearchForm'
 //import Navbar from '../Layout/Navbar'
 class Dashboard extends Component {
-
+    
     render() {
-
+        
         return (
             <React.Fragment>
                 {/* <Navbar/> */}
@@ -30,7 +30,7 @@ Love unites them...</p>
                         </div>
                     </div>
                 </div>
-                <UserSearchForm/>
+                <UserSearchForm history = {this.props.history}/>
                 <Footer/>
             </React.Fragment>
         )
