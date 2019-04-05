@@ -31,7 +31,9 @@ class Signin extends Component {
 
     render() {
 
-
+        if(this.props.auth.user){
+            return <Redirect to='/'></Redirect>
+        }
         return (
             <React.Fragment>
                 <div className="container">
@@ -74,7 +76,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         authError: state.auth.authError,
-        // auth : state.firebase.auth
+        auth : state.auth
     }
 }
 
