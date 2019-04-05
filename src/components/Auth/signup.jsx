@@ -1,25 +1,69 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-// import { connect } from 'react-redux'
-// import { signUp } from '../../store/Actions/authActions'
+import { connect } from 'react-redux'
+import { signup } from '../../Store/Actions/authActions'
 import Footer from '../Layout/Footer'
 class SignUp extends Component {
-  state = {
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      gender: '',
+      username: '',
+      age: null,
+      astro: '',
+      religion: '',
+      region: '',
+      job:''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+  // state = {
+  //   email: '',
+  //   password: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   gender: '',
+  //   username: '',
+  //   age: null,
+  //   astro: '',
+  //   religion: '',
+  //   region: '',
+  //   job: ''
+
+  // }
   handleChange = (e) => {
+    
     this.setState({
       [e.target.id]: e.target.value
     })
+    const gender = document.getElementById('gender').options[document.getElementById('gender').selectedIndex].text;
+    const religion = document.getElementById('religion').options[document.getElementById('religion').selectedIndex].text;
+    const job = document.getElementById('job').options[document.getElementById('job').selectedIndex].text;
+    const region = document.getElementById('region').options[document.getElementById('region').selectedIndex].text;
+    const astro = document.getElementById('astro').options[document.getElementById('astro').selectedIndex].text;
+
+    this.setState({
+        'gender' : gender,
+        'region' : region,
+        'job' : job,
+        'religion' : religion,
+        'astro' : astro,
+
+    })
   }
+ 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
-    //this.props.signUp(this.state);
-    this.props.history.push('/')
+
+    //console.log(this.state)
+    this.props.signUp(this.state);
+    // this.props.history.push('/')
   }
   render() {
 
@@ -50,20 +94,20 @@ class SignUp extends Component {
             </div>
             <div className="input-field">
               <label htmlFor="Age">Age</label>
-              <input type="number" id='Age' onChange={this.handleChange} />
+              <input type="number" id='age' onChange={this.handleChange} />
             </div>
             <div class="row">
               <label>Gender </label>
-              <select>
+              <select id="gender" value={this.state.gender} >
                 <option value="" disabled selected>Male</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </select>
             </div>
-            
+
             <div class="row">
               <label>Religion</label>
-              <select>
+              <select id="religion" onChange={this.handleChange}>
                 <option value="" disabled selected>Hindu</option>
                 <option value="1">Hindu</option>
                 <option value="2">Muslim</option>
@@ -73,7 +117,7 @@ class SignUp extends Component {
             </div>
             <div class="row">
               <label>Profession : </label>
-              <select>
+              <select id="job" onChange={this.handleChange}>
                 <option value="" disabled selected>Doctor</option>
                 <option value="1">Engineer</option>
                 <option value="2">Doctor</option>
@@ -83,7 +127,7 @@ class SignUp extends Component {
             </div>
             <div class="row">
               <label>Region :</label>
-              <select>
+              <select id="region" onChange={this.handleChange}>
                 <option value="" disabled selected>Delhi</option>
                 <option value="1">Delhi</option>
                 <option value="2">Mumbai</option>
@@ -93,7 +137,7 @@ class SignUp extends Component {
             </div>
             <div class="row">
               <label>Astrological Sign</label>
-              <select>
+              <select id="astro" onChange={this.handleChange}>
                 <option value="" disabled selected>Gemini</option>
                 <option value="1">Aries</option>
                 <option value="2">Gemini</option>
@@ -118,17 +162,17 @@ class SignUp extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     auth: state.firebase.auth,
-//     authError: state.auth.authError
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+    authError: state.auth.authError
+  }
+}
 
-// const mapDispatchToProps = (dispatch)=> {
-//   return {
-//     signUp: (creds) => dispatch(signUp(creds))
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (creds) => dispatch(signup(creds))
+  }
+}
 
-export default SignUp;
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
