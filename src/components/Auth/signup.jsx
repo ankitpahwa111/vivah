@@ -23,20 +23,7 @@ class SignUp extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  // state = {
-  //   email: '',
-  //   password: '',
-  //   firstName: '',
-  //   lastName: '',
-  //   gender: '',
-  //   username: '',
-  //   age: null,
-  //   astro: '',
-  //   religion: '',
-  //   region: '',
-  //   job: ''
-
-  // }
+  
   handleChange = (e) => {
     
     this.setState({
@@ -58,10 +45,10 @@ class SignUp extends Component {
     })
   }
  
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-
-    //console.log(this.state)
+    await this.handleChange(e)
+    console.log(this.state)
     this.props.signUp(this.state);
     // this.props.history.push('/')
   }

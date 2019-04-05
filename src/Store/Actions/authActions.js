@@ -60,7 +60,8 @@ export const signup = (credentials) => {
             }
         }).then((user) => {
             console.log('signed up');
-            console.log(user.data)
+            user.data.gender = credentials.gender.toLowerCase();
+            
             dispatch({ type: 'SIGNUP_SUCCESS', user: user.data })
         }).catch((err) => {
             //console.log( getState())
