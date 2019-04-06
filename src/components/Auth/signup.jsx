@@ -17,15 +17,15 @@ class SignUp extends Component {
       astro: '',
       religion: '',
       region: '',
-      job:''
+      job: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   handleChange = (e) => {
-    
+
     this.setState({
       [e.target.id]: e.target.value
     })
@@ -36,15 +36,15 @@ class SignUp extends Component {
     const astro = document.getElementById('astro').options[document.getElementById('astro').selectedIndex].text;
 
     this.setState({
-        'gender' : gender,
-        'region' : region,
-        'job' : job,
-        'religion' : religion,
-        'astro' : astro,
+      'gender': gender,
+      'region': region,
+      'job': job,
+      'religion': religion,
+      'astro': astro,
 
     })
   }
- 
+
   handleSubmit = async (e) => {
     e.preventDefault();
     await this.handleChange(e)
@@ -53,7 +53,9 @@ class SignUp extends Component {
     // this.props.history.push('/')
   }
   render() {
-
+    if (this.props.auth.user) {
+      return <Redirect to='/'></Redirect>
+    }
     return (
       <React.Fragment>
         <div className="container">

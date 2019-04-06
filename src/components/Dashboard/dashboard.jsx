@@ -9,9 +9,11 @@ const Dashboard = (props) => {
 
     let login = 'LOGIN';
     let signup = 'SIGN UP';
+    let UserForm = null
     if (props.auth.user) {
         login = null;
         signup = null;
+        UserForm = <UserSearchForm history={props.history} />
     }
     return (
         <React.Fragment>
@@ -35,7 +37,7 @@ Love unites them...</p>
                     </div>
                 </div>
             </div>
-            <UserSearchForm history={props.history} />
+            {UserForm}
             <Footer />
         </React.Fragment>
     )
