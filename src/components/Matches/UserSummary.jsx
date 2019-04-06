@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom'
 const UserSummary = (props) => {
-
+    const user = props.user;
     return (
 
         <div class="row">
@@ -11,19 +11,19 @@ const UserSummary = (props) => {
                     <div class="card-content white-text">
                         <img src="./Vivah.jpg" alt="ProfileImage" class='profile-image'/>
                         
-                        <span class="card-title profile-name">Ankit Pahwa</span>
+                        <span class="card-title profile-name">{user.username}</span>
                         <br />
-                        <span>21</span>
+                        <span>{user.age}</span>
                         <br />
-                        <span>Delhi</span>
+                        <span>{user.job}</span>
                         <br />
-                        <span>Hindu</span>
+                        <span>{user.region}</span>
                         <br />
-                        <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
+                        <p>I am a very simple person. I am good at containing small bits of information.
+                           I am convenient because I require little markup to use effectively.</p>
                     </div>
                     <div class="card-action">
-                        <Link to='/searches/username'>View Profile {' '} {' '}
+                        <Link to={'/searches/' + user.username}>View Profile {' '} {' '}
                         <i class="material-icons">sentiment_satisfied</i>
                         </Link>
 

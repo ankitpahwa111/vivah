@@ -32,6 +32,7 @@ class Signin extends Component {
     render() {
 
         if(this.props.auth.user){
+            
             return <Redirect to='/'></Redirect>
         }
         return (

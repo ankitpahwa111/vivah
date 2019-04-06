@@ -1,30 +1,30 @@
 import React from 'react';
-import {NavLink } from 'react-router-dom';
-import {signOut} from '../../store/Actions/authActions';
-import {connect} from 'react-redux'
-const SignedInLinks = (props)=>{
+import { NavLink } from 'react-router-dom';
+import { signout } from '../../Store/Actions/authActions';
+import { connect } from 'react-redux'
+const SignedInLinks = (props) => {
     //console.log('here')
-    const profile = props.profile;
-    return(
+    const auth = props.auth;
+    const initial = auth.user.username[0];
+    console.log(auth)
+    return (
         <div>
             <ul className='right'>
-            <li><NavLink to='/create'>New Post</NavLink></li>
-            <li><a onClick={props.signOut}>Sign Out</a></li>
-            <li><NavLink to='/' className='btn btn-floating pink lighten-3'>{profile.initials}</NavLink></li>
-            
+                <li><a onClick={props.signOut}>Sign Out</a></li>
+                <li><NavLink to={'searches/' + auth.user.username} className='btn btn-floating pink lighten-3'>{initial}</NavLink></li>
             </ul>
         </div>
-        
+
     )
 }
-const mapDispatchToProps=(dispatch)=>{
+const mapDispatchToProps = (dispatch) => {
     return {
-        signOut : ()=>dispatch(signOut())
+        signOut: () => dispatch(signout())
     }
 }
-const mapStateToProps=(state)=>{
-    return{
-        profile : state.firebase.profile
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
     }
 }
-export default connect(mapStateToProps , mapDispatchToProps)(SignedInLinks)
+export default connect(mapStateToProps, mapDispatchToProps)(SignedInLinks)

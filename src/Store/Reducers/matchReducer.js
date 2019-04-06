@@ -1,5 +1,7 @@
-
-const authReducer = (state , action) => {
+const initState = {
+    authError: null
+}
+const matchReducer = (state = initState , action) => {
     switch(action.type){
         case 'MATCHES_FOUND' : {
             
@@ -9,7 +11,7 @@ const authReducer = (state , action) => {
                 users : action.matches
             }
         }
-        case 'LOGIN_FAILED' : {
+        case 'MATCHES_NOT_FOUND' : {
             return {
                 authError: action.err.message
             }
@@ -18,4 +20,4 @@ const authReducer = (state , action) => {
         default : return state
     }
 }
-export default authReducer;
+export default matchReducer;

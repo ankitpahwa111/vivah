@@ -16,7 +16,7 @@ export const findMatches = (credentials) => {
             console.log('matches found', matches.data)
             dispatch({ type: 'MATCHES_FOUND', matches: matches.data })
         }).catch((err) => {
-            dispatch({ type: 'MATCH_ERROR', err })
+            dispatch({ type: 'MATCHES_NOT_FOUND', err })
         })
     }
 }

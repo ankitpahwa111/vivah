@@ -13,7 +13,7 @@ const Dashboard = (props) => {
     if (props.auth.user) {
         login = null;
         signup = null;
-        UserForm = <UserSearchForm history={props.history} />
+        UserForm =  <UserSearchForm history={props.history} />
     }
     return (
         <React.Fragment>

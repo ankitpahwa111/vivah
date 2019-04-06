@@ -24,7 +24,8 @@ class UserSearchForm extends Component {
         
         await this.handleChange(e)
         console.log(this.state)
-        this.props.findMatches(this.state);
+        await this.props.findMatches(this.state);
+        this.props.history.push('/searches')
 
     }
     handleChange = (e) => {
@@ -37,11 +38,13 @@ class UserSearchForm extends Component {
             'gender': gender,
             'religion': religion,
           })
+          if(this.state.gender=='') this.state.gender='male';
+          if(this.state.religion=='') this.state.religion = 'Hindu'
     }
     render() {
-        if(this.props.auth.user){
-            return <Redirect to='/searches'></Redirect>
-        }
+        // if(this.props.auth.user){
+        //     return <Redirect to='/searches'></Redirect>
+        // }
         return (
             <React.Fragment>
                 <div class="row Myform">
