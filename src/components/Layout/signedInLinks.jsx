@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { signout } from '../../Store/Actions/authActions';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import axios from 'axios'
 const SignedInLinks = (props) => {
     //console.log('here')
+    
     const auth = props.auth;
     const initial = auth.user.username[0];
     console.log(auth)

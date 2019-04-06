@@ -11,7 +11,7 @@ const UserSummary = (props) => {
                     <div class="card-content white-text">
                         <img src="./Vivah.jpg" alt="ProfileImage" class='profile-image'/>
                         
-                        <span class="card-title profile-name">{user.username}</span>
+                        <span class="card-title profile-name">{user.name}</span>
                         <br />
                         <span>{user.age}</span>
                         <br />
