@@ -68,7 +68,7 @@ class UserDetails extends Component {
     render() {
         const user = this.props.user;
         const auth = this.props.auth;
-       
+        console.log(user)
         if (!auth.user) {
             return <Redirect to='/'></Redirect>
         }
@@ -120,8 +120,12 @@ class UserDetails extends Component {
 const mapStateToProps = (state, ownProps) => {
     console.log(state);
     const username = ownProps.match.params.username;
-    //console.log(id);
+    console.log(username);
     const users = state.matches.users;
+    if(!state.auth.user){
+        ownProps.history.push('/')
+        return
+    }
     //console.log(projects)
     const fakeUser =
     {
@@ -133,13 +137,18 @@ const mapStateToProps = (state, ownProps) => {
         email: state.auth.user.email,
         religionName: "Hindu"
     }
-
-    const user = users ? users.filter((user) => user.username === username)[0] : fakeUser;
-    console.log(user);
-    let flag = false;
+    console.log(fakeUser);
     if (username === state.auth.user.username) {
         flag = true;
     }
+    let user = users ? users.filter((user) => user.username === username)[0] : fakeUser;
+    if(flag==true){
+        user = fakeUser
+    }
+    
+    console.log(user);
+    let flag = false;
+    
     return {
         user: user,
         auth: state.auth,

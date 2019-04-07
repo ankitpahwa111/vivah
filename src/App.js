@@ -13,7 +13,7 @@ import About from './components/Layout/About';
 //import Sidebar from './components/Layout/Sidenav'
 class App extends Component {
   render() {
-    return ( 
+    return (  
       <BrowserRouter>
         <div className="App">
           <Navbar />

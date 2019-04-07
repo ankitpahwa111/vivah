@@ -17,7 +17,7 @@ class Signin extends Component {
         })
     }
     handleOnSubmit = (e) => {
-        if(this.state.gender!== 'male' && this.state.gender!== 'female'){
+        if (this.state.gender !== 'male' && this.state.gender !== 'female') {
             throw new Error('the gender must be "male" or "female"')
         }
         e.preventDefault();
@@ -31,9 +31,13 @@ class Signin extends Component {
 
     render() {
 
-        if(this.props.auth.user){
-            
+        if (this.props.auth.user) {
+
             return <Redirect to='/'></Redirect>
+        }
+        let error = null;
+        if (this.props.authError == 'Request failed with status code 403') {
+            error = 'Wrong Email or Password';
         }
         return (
             <React.Fragment>
@@ -55,6 +59,7 @@ class Signin extends Component {
                             <label htmlFor="gender">Gender (male or female)</label>
                             <input type="text" id="gender" onChange={this.handleOnChange} />
                         </div>
+                        <div class='center red-text text-darken-2'>{error}</div>
                         <div className="input-field">
                             <button className="btn z-depth-0 pink darken-1">Login
                             <i class="material-icons right">send</i>
@@ -77,7 +82,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         authError: state.auth.authError,
-        auth : state.auth
+        auth: state.auth
     }
 }
 

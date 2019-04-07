@@ -17,7 +17,8 @@ class SignUp extends Component {
       astro: '',
       religion: '',
       region: '',
-      job: ''
+      job: '',
+      error : null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -41,6 +42,7 @@ class SignUp extends Component {
       'job': job,
       'religion': religion,
       'astro': astro,
+      
 
     })
   }
@@ -55,6 +57,13 @@ class SignUp extends Component {
   render() {
     if (this.props.auth.user) {
       return <Redirect to='/'></Redirect>
+    }
+    let error = null;
+    if(this.props.authError=='Request failed with status code 403'){
+      error = 'You are missing some details , Please Check';
+    }
+    if(this.props.authError=="Cannot create property 'gender' on string 'User Name is taken , pls try another user name'"){
+      error = 'User Name is taken , pls try another user name'
     }
     return (
       <React.Fragment>
@@ -134,6 +143,7 @@ class SignUp extends Component {
                 <option value="4">Libra</option>
               </select>
             </div>
+            <div class='center red-text text-darken-2'>{error}</div>
             <div className="input-field">
               <button className="btn pink lighten-1 z-depth-0">Sign Up
             <i class="material-icons right">add_circle</i>
@@ -163,5 +173,6 @@ const mapDispatchToProps = (dispatch) => {
     signUp: (creds) => dispatch(signup(creds))
   }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

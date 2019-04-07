@@ -11,6 +11,10 @@ const UserList = (props) => {
   if (!auth.user) {
     return <Redirect to='/'></Redirect>
   }
+  if(matches.length==0){
+    return <div className="center red-text">No Matches Found</div>
+  }
+  console.log(matches.length)
   return (
     <React.Fragment>
       <div className="user-list section">
@@ -30,7 +34,7 @@ const UserList = (props) => {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    matches: state.matches.users,
+    matches: state.matches.users || [],
     auth: state.auth
   }
 
