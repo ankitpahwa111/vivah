@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-// import SignedInLinks from './signedInLinks';
-// import SignedOutLinks from './signedOutLinks';
 import { connect } from 'react-redux';
 import { findMatches } from '../../Store/Actions/matchActions'
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import $ from 'jquery'
 class UserSearchForm extends Component {
     constructor(props) {
         super(props);
@@ -41,6 +40,11 @@ class UserSearchForm extends Component {
           if(this.state.gender=='') this.state.gender='male';
           if(this.state.religion=='') this.state.religion = 'Hindu'
     }
+    componentDidMount() {
+    
+        window.$('select').material_select()
+    
+      }
     render() {
         // if(this.props.auth.user){
         //     return <Redirect to='/searches'></Redirect>

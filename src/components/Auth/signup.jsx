@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signup } from '../../Store/Actions/authActions'
-import Footer from '../Layout/Footer'
+import Footer from '../Layout/Footer';
+import $ from 'jquery'
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ class SignUp extends Component {
       religion: '',
       region: '',
       job: '',
-      error : null
+      error: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -42,7 +43,7 @@ class SignUp extends Component {
       'job': job,
       'religion': religion,
       'astro': astro,
-      
+
 
     })
   }
@@ -54,17 +55,23 @@ class SignUp extends Component {
     this.props.signUp(this.state);
     // this.props.history.push('/')
   }
+  componentDidMount() {
+    
+    window.$('select').material_select()
+
+  }
   render() {
     if (this.props.auth.user) {
       return <Redirect to='/'></Redirect>
     }
     let error = null;
-    if(this.props.authError=='Request failed with status code 403'){
+    if (this.props.authError == 'Request failed with status code 403') {
       error = 'You are missing some details , Please Check';
     }
-    if(this.props.authError=="Cannot create property 'gender' on string 'User Name is taken , pls try another user name'"){
+    if (this.props.authError == "Cannot create property 'gender' on string 'User Name is taken , pls try another user name'") {
       error = 'User Name is taken , pls try another user name'
     }
+
     return (
       <React.Fragment>
         <div className="container">
@@ -96,7 +103,7 @@ class SignUp extends Component {
             </div>
             <div class="row">
               <label>Gender </label>
-              <select id="gender" value={this.state.gender} >
+              <select id="gender" value={this.state.gender}>
                 <option value="" disabled selected>Male</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
