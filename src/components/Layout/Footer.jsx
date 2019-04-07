@@ -9,17 +9,17 @@ const Footer = (props) => {
                     <div class="col l6 s12">
                         <h5 class="white-text"><blockquote> Vivah Pvt. Ltd.</blockquote></h5>
                         <br/>
-                        <a class="grey-text text-lighten-3" href="#!">How To Use Vivah.com ? </a> <br/>
-                        <a class="grey-text text-lighten-3" href="#!">Community</a> <br/>
-                        <a class="grey-text text-lighten-3" href="#!">Contribute</a>
+                        <Link class="grey-text text-lighten-3" to="/">How To Use Vivah.com ? </Link> <br/>
+                        <Link class="grey-text text-lighten-3" to="/">Community</Link> <br/>
+                        <Link class="grey-text text-lighten-3" to="/">Contribute</Link>
                     </div>
                     <div class="col l4 offset-l2 s12">
                         <h5 class="white-text"><blockquote> Company</blockquote></h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Need Help</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">About Us</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Become A Member</a></li>
+                            <li><Link class="grey-text text-lighten-3" to="/">Need Help</Link></li>
+                            <li><Link class="grey-text text-lighten-3" to="/contact">Contact Us</Link></li>
+                            <li><Link class="grey-text text-lighten-3" to="/about">About Us</Link></li>
+                            <li><Link class="grey-text text-lighten-3" to="/">Become A Member</Link></li>
                         </ul>
                     </div>
                 </div>

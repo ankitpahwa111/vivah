@@ -7,10 +7,13 @@ import { Switch } from 'react-router-dom'
 import Navbar from './components/Layout/Navbar';
 import UserList from './components/Matches/UserList';
 import UserDetails from './components/Matches/UserDetails';
+import Contact from './components/Layout/Contact';
+import About from './components/Layout/About';
+
 //import Sidebar from './components/Layout/Sidenav'
 class App extends Component {
   render() {
-    return (
+    return ( 
       <BrowserRouter>
         <div className="App">
           <Navbar />
@@ -23,6 +26,8 @@ class App extends Component {
             <Route exact path='/signup' component={SignUp}></Route>
             <Route exact path='/searches' component={UserList}></Route>
             <Route exact path='/searches/:username' component={UserDetails}></Route> 
+            <Route exact path='/contact' component={Contact}></Route>
+            <Route exact path='/about' component={About}></Route>
             
           </Switch>
         </div>

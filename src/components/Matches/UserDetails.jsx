@@ -4,7 +4,13 @@ import { connect } from 'react-redux';
 // import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import Footer from '../Layout/Footer'
+import Footer from '../Layout/Footer';
+
+const spanMargin = {
+    'margin' : '150px',
+    'text-color' : 'red',
+    'text-decoration' : 'underline'
+  };
 class UserDetails extends Component {
 
     state = {
@@ -37,7 +43,7 @@ class UserDetails extends Component {
     // }
     handlefavourites = async (username,gender) => {
         this.setState({
-            favourite : 'added to favourites'
+            favourite : 'Added to Favourites'
         })
         // try {
         //     axios({
@@ -93,9 +99,10 @@ class UserDetails extends Component {
                                 <br />
                                 <br />
                                 <a class="waves-effect waves-light btn"><i class="material-icons left">add_a_photo</i>View Pictures</a>
-                                <button class="btn-floating halfway-fab waves-effect waves-light red right" ><i class="material-icons">add</i></button>
+                                <button class="btn-floating halfway-fab waves-effect waves-light red right" onClick={this.handlefavourites}><i class="material-icons">add</i></button>
                                 <br/>
-                                <span>{this.state.favourite}</span>
+                                <br/>
+                                <span style = {spanMargin}>{this.state.favourite}</span>
                             </div>
                         </div>
                         {/* add Photos of the user */}
