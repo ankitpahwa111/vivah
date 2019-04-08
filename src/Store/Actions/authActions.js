@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 export const signIn = (credentials) => {
     //console.log(credentials)
     return (dispatch, getState) => {
@@ -8,7 +8,7 @@ export const signIn = (credentials) => {
                 'Access-Control-Allow-Origin': true,
                 'Content-Type': 'application/json'
             },
-            url: 'http://localhost:7788/api/users/login',
+            url: '/api/users/login',
             method: 'POST',
             data: {
                 email: credentials.email,
@@ -43,7 +43,7 @@ export const signup = (credentials) => {
                 'Access-Control-Allow-Origin': true,
                 'Content-Type': 'application/json'
             },
-            url: 'http://localhost:7788/api/users',
+            url: '/api/users',
             method: 'POST',
             data: {
                 email: credentials.email,

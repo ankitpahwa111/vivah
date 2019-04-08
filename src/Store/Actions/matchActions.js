@@ -8,7 +8,7 @@ export const findMatches = (credentials) => {
                 upperLimit : credentials.age_upper_limit,
                 religion : credentials.religion
             },
-            url: 'http://localhost:7788/api/users',
+            url: '/api/users',
             headers: {
                 'Authorization': 'Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFua2l0cGFod2ExMTEwMDBAZ21haWwuY29tIiwidXNlcm5hbWUiOiJhbmtpdDExMSIsInBhc3N3b3JkIjoiYW5raXQ5ODk5IiwiZ2VuZGVyIjoiZmVtYWxlIiwiaWF0IjoxNTUzNjI5NjY3fQ.HgsipVz0pO7YszCVqtc9y2SFG6qxHSf8qi6UZb-JLVo'
             }

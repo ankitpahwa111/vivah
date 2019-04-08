@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import Footer from '../Layout/Footer';
-import UserSearchForm from '../Matches/UserSearchForm'
-//import Navbar from '../Layout/Navbar'
+import UserSearchForm from '../Matches/UserSearchForm';
+
+//import Navbar from '../Layout/Navbar';
+const style = {
+    'width' : '50%',
+    'height' : '200px'
+}
+
 const Dashboard = (props) => {
 
 
@@ -13,11 +19,13 @@ const Dashboard = (props) => {
     if (props.auth.user) {
         login = null;
         signup = null;
-        UserForm =  <UserSearchForm history={props.history} />
+        UserForm = <UserSearchForm history={props.history} />
     }
     return (
         <React.Fragment>
+            
             {/* <Navbar/> */}
+            
             <div class="row Mycard">
                 <div class="col">
                     <div class="card">
