@@ -37,7 +37,7 @@ export const signup = (credentials) => {
         if(credentials.religion === 'Muslim') credentials.religionId = 2 ;
         if(credentials.religion === 'Christian') credentials.religionId = 3 ;
         if(credentials.religion === 'Sikh') credentials.religionId = 4 ;
-        console.log(credentials)
+        
         axios({
             headers: {
                 'Access-Control-Allow-Origin': true,
@@ -59,13 +59,13 @@ export const signup = (credentials) => {
 
             }
         }).then((user) => {
-            console.log('signed up');
+            
             user.data.gender = credentials.gender.toLowerCase();
             
             dispatch({ type: 'SIGNUP_SUCCESS', user: user.data })
         }).catch((err) => {
             //console.log( getState())
-            console.log('error is ', err)
+            
             dispatch({ type: 'SIGNUP_FAILED', err: err })
         })
       

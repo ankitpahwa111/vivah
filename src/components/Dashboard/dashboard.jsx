@@ -52,7 +52,7 @@ Love unites them...</p>
 
 }
 const mapStateToProps = (state) => {
-    console.log(state)
+    
     return {
         authError: state.auth.authError,
         auth: state.auth

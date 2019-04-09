@@ -118,9 +118,9 @@ class UserDetails extends Component {
 
 }
 const mapStateToProps = (state, ownProps) => {
-    console.log(state);
+    
     const username = ownProps.match.params.username;
-    console.log(username);
+    
     const users = state.matches.users;
     if(!state.auth.user){
         ownProps.history.push('/')
@@ -137,7 +137,7 @@ const mapStateToProps = (state, ownProps) => {
         email: state.auth.user.email,
         religionName: "Hindu"
     }
-    console.log(fakeUser);
+    
     if (username === state.auth.user.username) {
         flag = true;
     }
@@ -146,7 +146,7 @@ const mapStateToProps = (state, ownProps) => {
         user = fakeUser
     }
     
-    console.log(user);
+    
     let flag = false;
     
     return {

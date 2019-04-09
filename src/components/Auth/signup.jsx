@@ -51,7 +51,7 @@ class SignUp extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     await this.handleChange(e)
-    console.log(this.state)
+    
     this.props.signUp(this.state);
     // this.props.history.push('/')
   }

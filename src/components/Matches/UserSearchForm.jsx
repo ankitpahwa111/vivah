@@ -22,7 +22,7 @@ class UserSearchForm extends Component {
         e.preventDefault();
         
         await this.handleChange(e)
-        console.log(this.state)
+        
         await this.props.findMatches(this.state);
         this.props.history.push('/searches')
 
@@ -96,7 +96,7 @@ class UserSearchForm extends Component {
 
 }
 const mapStateToProps = (state) => {
-    console.log(state)
+    
     return {
         auth: state.auth
     }
