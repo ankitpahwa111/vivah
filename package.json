@@ -8,6 +8,8 @@
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "mysql2": "^1.6.5",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",

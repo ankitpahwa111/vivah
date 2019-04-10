@@ -1,8 +1,6 @@
 const Sequelize = require('sequelize');
 const db = new Sequelize({
-    database: 'realworlddb',
-    username: 'realworlduser',
-    password: 'realworldpass',
+    database: process.env.DATABASE_URL,
     dialect: 'postgres'
 })
 const couples = db.define('couples', {
