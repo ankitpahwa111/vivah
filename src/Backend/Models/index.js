@@ -3,7 +3,7 @@ const db = new Sequelize({
     database: 'realworlddb',
     username: 'realworlduser',
     password: 'realworldpass',
-    dialect: 'mysql'
+    dialect: 'postgres'
 })
 const couples = db.define('couples', {
     couplePhoto: {
