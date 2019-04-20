@@ -31,6 +31,7 @@ async function CreateUser(user) {
             return userJson
         }
         catch (err) {
+            console.log(err)
             err.message = 'User Name is taken , pls try another user name';
             return err.message;
         }
