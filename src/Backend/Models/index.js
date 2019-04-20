@@ -128,10 +128,25 @@ const photos = db.define('photos', {
         allowNull: false
     }
 })
+//seed religions
+const seedReligions = async () =>{
+    await religion.create({
+        name : "Hindu"
+    })
+    await religion.create({
+        name : "Muslim"
+    })
+    await religion.create({
+        name : "Christian"
+    })
+    await religion.create({
+        name : "Sikh"
+    })
+}
+seedReligions();
 
 
 couples.hasOne(males);
-
 couples.hasOne(females);
 males.hasMany(photos);
 photos.belongsTo(males);
