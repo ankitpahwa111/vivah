@@ -2,6 +2,7 @@ const { males } = require('../Models');
 const { females } = require('../Models');
 const { createJwt } = require('../utils/jwt')
 async function CreateUser(user) {
+    console.log(user)
     let male = {};
     let female = {};
     if (!user.username) throw new Error('missing username')
