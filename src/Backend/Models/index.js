@@ -1,7 +1,18 @@
 const Sequelize = require('sequelize');
-const db = new Sequelize(process.env.DATABASE_URL,{
-    dialect: 'postgres'
-})
+// const db = new Sequelize(process.env.DATABASE_URL,{
+//     dialect: 'postgres'
+// })
+let db;
+if (process.env.DATABASE_URL) {
+    db = new Sequelize(process.env.DATABASE_URL)
+} else {
+    db = new Sequelize({
+        database: 'realworlddb',
+        username: 'realworlduser',
+        password: 'realworldpass',
+        dialect: 'mysql'
+    })
+}
 const couples = db.define('couples', {
     couplePhoto: {
         type: Sequelize.STRING,
