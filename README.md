@@ -1,8 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Vivah.com #
 
-In the project directory, you can run:
+This is the Shaadi.com Clone :ok_hand: , Where You can 
+* Login/SignUp :thumbsup:
+* Find Matches Based On Your Preferences :clap:
+* View Users Profile :clap:
+* Add them to favourites :open_hands:
+![vivah](myapp.jpg)
 
 ### `npm start`
 
