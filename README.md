@@ -6,9 +6,9 @@ This is the Shaadi.com Clone :ok_hand: , Where You can
 * Find Matches Based On Your Preferences :clap:
 * View Users Profile :clap:
 * Add them to favourites :open_hands:
-<br>
+
 ![vivah](myapp.jpg)
-<br>
+
 
 ### `Demo` ###
 
