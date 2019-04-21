@@ -6,25 +6,32 @@ This is the Shaadi.com Clone :ok_hand: , Where You can
 * Find Matches Based On Your Preferences :clap:
 * View Users Profile :clap:
 * Add them to favourites :open_hands:
+<br>
 ![vivah](myapp.jpg)
+<br>
 
-### `npm start`
+### `Demo` ###
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Demo of this app is Present at https://vivahapp.herokuapp.com
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### `Backend` ###
 
-### `npm test`
+Backend of this app is Built with NodeJS (Express) <br>
+The database in local system is Mysql <br>
+On Production , the database is Postgres <br>
+Sequelize is used as ORM 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Frontend` ###
 
-### `npm run build`
+Frontend is built with ReactJS And Materialize is used for CSS
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `How to Start On local System` ###
+ * Clone the repository 
+ * run `npm install` to install dependencies
+ * run `npm run build` to create build folder
+ * run `node src/Backend/server.js`
+ * go to https://localhost:5000 to view app
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+ ## `App Info` ##
+ #### Created By : Ankit Pahwa
+ #### Version : 1.0.0
